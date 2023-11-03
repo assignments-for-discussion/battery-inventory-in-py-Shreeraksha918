@@ -86,13 +86,20 @@ def test_bucketing_by_health():
   assert(counts["exchange"] == 3)
   assert(counts["failed"] == 3)
 
-  #empty present capacotance list
+  #empty present capacitance list
   present_capacities=[]
   counts = count_batteries_by_health(present_capacities)
   assert(counts["healthy"] == 0)
   assert(counts["exchange"] == 0)
   assert(counts["failed"] == 0)
-  
+
+  #one item in list
+  present_capacities=[120]
+  counts = count_batteries_by_health(present_capacities)
+  assert(counts["healthy"] == 1)
+  assert(counts["exchange"] == 0)
+  assert(counts["failed"] == 0)
+
   print("Done counting :)")
 
 
