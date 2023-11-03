@@ -15,9 +15,9 @@ def count_batteries_by_health(present_capacities):
       
     
   return {
-    "healthy": 0,
-    "exchange": 0,
-    "failed": 0
+    "healthy": count_healthy,
+    "exchange": count_exchange,
+    "failed": count_failed
   }
 
 
