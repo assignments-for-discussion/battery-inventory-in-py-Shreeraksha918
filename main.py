@@ -5,6 +5,14 @@ def count_batteries_by_health(present_capacities):
   count_failed=0
   for cpcty in present_capacities:
     rated_cpcty=120
+    SoH=(cpcty/rated_cpcty)*100
+    if SoH >=80:
+      count_healthy+=1
+    elif 62<=SoH <80:
+      count_exchange+=1
+    else:
+      count_failed+=1
+      
     
   return {
     "healthy": 0,
