@@ -1,5 +1,11 @@
 
 def count_batteries_by_health(present_capacities):
+  count_healthy=0
+  count_exchange=0
+  count_failed=0
+  for cpcty in present_capacities:
+    rated_cpcty=120
+    
   return {
     "healthy": 0,
     "exchange": 0,
