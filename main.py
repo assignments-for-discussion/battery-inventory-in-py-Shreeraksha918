@@ -31,21 +31,21 @@ def test_bucketing_by_health():
   assert(counts["failed"] == 1)
 
   #mixed batteries with boundary values
-  present_capacities=[80,62,79,61,63,81,60]
+  present_capacities=[115, 75, 62, 110, 110, 78, 78, 120, 120]
   counts = count_batteries_by_health(present_capacities)
-  assert(counts["healthy"] == 2)
-  assert(counts["exchange"] == 3)
-  assert(counts["failed"] == 2)
+  assert(counts["healthy"] == 4)
+  assert(counts["exchange"] ==2 )
+  assert(counts["failed"] ==2 )
   
   #All healthy batteries
-  present_capacities=[80,90,100,105,95,88]
+  present_capacities=[115, 118, 118, 115, 112, 112]
   counts = count_batteries_by_health(present_capacities)
   assert(counts["healthy"] == 6)
   assert(counts["exchange"] == 0)
   assert(counts["failed"] == 0)
 
   #All exchange batteries
-  present_capacities=[62,70,65,66,75,79]
+  present_capacities=[80, 80, 75, 75, 62, 62]
   counts = count_batteries_by_health(present_capacities)
   assert(counts["healthy"] == 0)
   assert(counts["exchange"] == 6)
@@ -59,28 +59,28 @@ def test_bucketing_by_health():
   assert(counts["failed"] == 6)
 
   # healthy and exchange batteries
-  present_capacities=[63,90,77,80,100,99]
+  present_capacities=[115,112,87,118,110,80]
   counts = count_batteries_by_health(present_capacities)
   assert(counts["healthy"] == 4)
   assert(counts["exchange"] == 2)
   assert(counts["failed"] == 0)
 
   #healthy and failed batteries
-  present_capacities=[50,90,40,105,60,88]
+  present_capacities=[50,110,40,105,55,120]
   counts = count_batteries_by_health(present_capacities)
   assert(counts["healthy"] == 3)
   assert(counts["exchange"] == 0)
   assert(counts["failed"] == 3)
 
   #exchange and failed batteries
-  present_capacities=[79,61,55,53,43,62]
+  present_capacities=[85,52,55,53,43,75]
   counts = count_batteries_by_health(present_capacities)
   assert(counts["healthy"] == 2)
   assert(counts["exchange"] == 0)
   assert(counts["failed"] == 4)
 
   # mixes batteries with repetative value
-  present_capacities=[80,80,100,105,63,63,77,45,45,50]
+  present_capacities=[118,120,110,105,63,63,77,45,45,50]
   counts = count_batteries_by_health(present_capacities)
   assert(counts["healthy"] == 4)
   assert(counts["exchange"] == 3)
